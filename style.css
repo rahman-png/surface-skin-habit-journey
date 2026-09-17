@@ -107,5 +107,10 @@ header .brand{background:transparent!important}
 .portrait-stack .concern::after{left:100%!important;right:auto!important;margin-left:8px}
 @media(max-width:760px){.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:78%}.portrait-stack .concern::after{display:none}}
 
+/* Read each annotation from the line toward its label. */
+.portrait-stack .concern::after{left:0!important;right:auto!important;margin-left:0}
+.portrait-stack .concern span{transform:translateX(116px)}
+@media(max-width:760px){.portrait-stack .concern span{transform:none}}
+
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
 .experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}
