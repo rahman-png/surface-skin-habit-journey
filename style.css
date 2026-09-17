@@ -90,5 +90,9 @@ header .brand{background:transparent!important}
 .portrait-stack .skin-concerns{z-index:3;overflow:visible}.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:82%;right:auto}.portrait-stack .concern.acne{top:19%}.portrait-stack .concern.dullness{top:31%}.portrait-stack .concern.oily{top:43%}.portrait-stack .concern.dryness{top:55%}
 @media(max-width:760px){.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:78%;right:auto}.portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:51%}}
 
+/* Clean callout lines and closer face anchors. */
+.concern::before{display:none}.portrait-stack .concern.dullness{left:77%;top:27%}.portrait-stack .concern.oily{left:77%;top:36%}
+@media(max-width:760px){.portrait-stack .concern.dullness{left:74%;top:27%}.portrait-stack .concern.oily{left:74%;top:36%}}
+
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
 .experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}
