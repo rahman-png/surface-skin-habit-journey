@@ -85,3 +85,6 @@ header .brand{background:transparent!important}
 .concern::before{all:unset;content:"";position:absolute;right:calc(100% + 166px);top:calc(50% + 7px);width:6px;height:6px;border-left:1px solid #111;border-bottom:1px solid #111;transform:rotate(45deg)}
 .concern.acne::after,.concern.dryness::after{left:auto!important;right:100%!important}.concern.acne::before,.concern.dryness::before{left:auto!important;right:calc(100% + 166px)!important}
 @media(max-width:760px){.concern.acne,.concern.dullness,.concern.oily,.concern.dryness{left:auto;right:4%}.concern.acne{top:18%}.concern.dullness{top:27%}.concern.oily{top:37%}.concern.dryness{top:47%}}
+
+/* The Experience chapter becomes a cream panel that masks the fixed portrait. */
+.experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}
