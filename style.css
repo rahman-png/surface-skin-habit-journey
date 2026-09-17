@@ -86,5 +86,9 @@ header .brand{background:transparent!important}
 .concern.acne::after,.concern.dryness::after{left:auto!important;right:100%!important}.concern.acne::before,.concern.dryness::before{left:auto!important;right:calc(100% + 166px)!important}
 @media(max-width:760px){.concern.acne,.concern.dullness,.concern.oily,.concern.dryness{left:auto;right:4%}.concern.acne{top:18%}.concern.dullness{top:27%}.concern.oily{top:37%}.concern.dryness{top:47%}}
 
+/* Callouts are anchored to the moving portrait, rather than the document section. */
+.portrait-stack .skin-concerns{z-index:3;overflow:visible}.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:82%;right:auto}.portrait-stack .concern.acne{top:19%}.portrait-stack .concern.dullness{top:31%}.portrait-stack .concern.oily{top:43%}.portrait-stack .concern.dryness{top:55%}
+@media(max-width:760px){.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:78%;right:auto}.portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:51%}}
+
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
 .experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}

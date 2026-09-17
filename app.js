@@ -37,8 +37,8 @@ function update(){let position=3;for(let i=0;i<3;i++){if(scrollY<chapters[i+1].o
  const headingParent=journeyHeading.parentElement.getBoundingClientRect();
  const headingEnd=Math.max(0,innerWidth-24-headingParent.left-journeyHeading.offsetWidth);
  journeyHeading.style.transform=`translateX(${headingEnd*firstSectionProgress}px)`;
- const suctionProgress=clamp(firstSectionProgress*2.35);
- concernMarkers.forEach(marker=>{const x=Number(marker.dataset.suckX)||0,y=260;marker.style.opacity=String(1-suctionProgress);marker.style.transform=`translate(${x*suctionProgress}px,${y*suctionProgress}px) scale(${1-.55*suctionProgress})`});
+ const suctionProgress=clamp(firstSectionProgress*1.5);
+ concernMarkers.forEach(marker=>{marker.style.opacity=String(1-suctionProgress);marker.style.transform=`translate(${-120*suctionProgress}px,${55*suctionProgress}px) scale(${1-.5*suctionProgress})`});
  const experienceProgress=clamp((scrollY-chapters[1].offsetTop)/(chapters[2].offsetTop-chapters[1].offsetTop));
  if(experienceRail){
   const travel=Math.max(0,experienceRail.offsetWidth-innerWidth+45);
