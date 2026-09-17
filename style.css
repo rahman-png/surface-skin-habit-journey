@@ -83,4 +83,5 @@ header .brand{background:transparent!important}
 .concern.acne{top:23%}.concern.dullness{top:35%}.concern.oily{top:48%}.concern.dryness{top:61%}
 .concern::after{all:unset;content:"";position:absolute;right:100%;top:50%;width:170px;height:20px;background:center/100% 100% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 20'%3E%3Cpath d='M170 10 Q148 1 126 10 T82 10 T38 10 T0 10' fill='none' stroke='%23111' stroke-width='1.4'/%3E%3C/svg%3E")}
 .concern::before{all:unset;content:"";position:absolute;right:calc(100% + 166px);top:calc(50% + 7px);width:6px;height:6px;border-left:1px solid #111;border-bottom:1px solid #111;transform:rotate(45deg)}
+.concern.acne::after,.concern.dryness::after{left:auto!important;right:100%!important}.concern.acne::before,.concern.dryness::before{left:auto!important;right:calc(100% + 166px)!important}
 @media(max-width:760px){.concern.acne,.concern.dullness,.concern.oily,.concern.dryness{left:auto;right:4%}.concern.acne{top:18%}.concern.dullness{top:27%}.concern.oily{top:37%}.concern.dryness{top:47%}}
