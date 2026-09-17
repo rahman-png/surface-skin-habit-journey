@@ -104,7 +104,7 @@ header .brand{background:transparent!important}
 
 /* Keep every concern marker and its line in the clear space on the right. */
 .portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:84%}
-.portrait-stack .concern::after{left:100%;right:auto;margin-left:8px}
+.portrait-stack .concern::after{left:100%!important;right:auto!important;margin-left:8px}
 @media(max-width:760px){.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:78%}.portrait-stack .concern::after{display:none}}
 
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
