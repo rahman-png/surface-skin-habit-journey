@@ -67,3 +67,4 @@ body{overflow-x:hidden}.chapter{overflow:hidden}.chapter .copy{z-index:4}.intro 
 /* Keep all editorial copy clear of persistent controls and moving imagery. */
 .steps{display:none}.experience-rail{top:2%}.experience-rail img{height:280px}
 @media(max-width:760px){.experience-rail{top:12%}.experience-rail img{height:185px}}
+header .brand{background:transparent!important}
