@@ -4,6 +4,7 @@ const canvas=document.querySelector('#motion'),ctx=canvas.getContext('2d');
 const journeyHeading=document.querySelector('#journey-heading');
 const experienceRail=document.querySelector('.experience-rail');
 const expertGrid=document.querySelector('.expert-grid');
+const concernMarkers=[...document.querySelectorAll('.concern')];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const clamp=v=>Math.max(0,Math.min(1,v));
 const total=240, cache=new Map(),pending=new Map();
@@ -33,6 +34,7 @@ function update(){let position=3;for(let i=0;i<3;i++){if(scrollY<chapters[i+1].o
  const headingParent=journeyHeading.parentElement.getBoundingClientRect();
  const headingEnd=Math.max(0,innerWidth-24-headingParent.left-journeyHeading.offsetWidth);
  journeyHeading.style.transform=`translateX(${headingEnd*firstSectionProgress}px)`;
+ concernMarkers.forEach(marker=>{const x=Number(marker.dataset.suckX)||0,y=Number(marker.dataset.suckY)||0;marker.style.opacity=String(1-firstSectionProgress);marker.style.transform=`translate(${x*firstSectionProgress}px,${y*firstSectionProgress}px) scale(${1-.35*firstSectionProgress})`});
  const experienceProgress=clamp((scrollY-chapters[1].offsetTop)/(chapters[2].offsetTop-chapters[1].offsetTop));
  if(experienceRail){
   const travel=Math.max(0,experienceRail.offsetWidth-innerWidth+45);
