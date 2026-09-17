@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+@font-face{font-family:'Neurial Grotesk Medium';src:url('assets/NeurialGrotesk-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+:root{--paper:#f4f0e8;--ink:#333c31;--muted:#818477;--accent:#985e45;--line:#d9ddcf}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',Arial,sans-serif}button{font:inherit;cursor:pointer}a{text-decoration:none;color:inherit}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}header{position:fixed;inset:0 0 auto;height:96px;margin:0 5%;display:flex;align-items:center;justify-content:space-between;z-index:10;border-bottom:1px solid var(--line);background:var(--paper)}.brand{font:48px Georgia;letter-spacing:-4px}.brand sup{font:11px Arial;vertical-align:top;display:inline-block;margin:10px 0 0 6px;letter-spacing:0}header>span{font-size:9px;letter-spacing:2.4px}header>button{border:0;background:none;color:var(--ink);font-size:11px}.fixed-art{position:fixed;inset:100px 0 107px;pointer-events:none;z-index:2;display:flex;justify-content:center;align-items:center}.portrait-stack{position:relative;height:100%;width:min(43vw,500px);isolation:isolate;mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}.pose{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}.pose:first-child{opacity:1}.chapter{height:115svh;min-height:740px;position:relative;display:grid;grid-template-columns:28% 44% 28%;align-items:center;padding:0 5% 13svh}.chapter:last-child{height:100svh;min-height:100svh}.copy{grid-column:1;z-index:3;position:relative}.chapter:nth-child(even) .copy{grid-column:3}.chapter:nth-child(even) aside{grid-column:1;grid-row:1;text-align:left}.eyebrow{color:var(--accent);font-size:9px;letter-spacing:2px;margin:0 0 28px}h1,h2{font:normal clamp(34px,3.8vw,62px)/1.08 Georgia;letter-spacing:-2px;margin:0 0 28px}em{color:var(--accent);font-weight:normal}.copy>p:not(.eyebrow){font-size:12px;color:var(--muted);line-height:1.9;margin:0 0 27px}.next{border:0;border-radius:30px;background:var(--ink);color:var(--paper);padding:14px 20px;font-size:10px}.next span{margin-left:25px;font-size:15px}.next:hover{background:var(--accent)}aside{grid-column:3;text-align:right;z-index:3}aside b{font-size:60px;font-weight:400;color:#959e7b}aside p{font:italic 23px/1.5 Georgia;margin:20px 0}aside small{font-size:8px;letter-spacing:1.5px;color:var(--muted)}.fixed-caption{position:fixed;bottom:117px;left:50%;transform:translateX(-50%);z-index:5;font-size:10px;letter-spacing:.5px;white-space:nowrap;color:#8d9874}.fixed-caption span{color:var(--ink);margin-left:6px}.steps{position:fixed;bottom:35px;left:5%;right:5%;height:64px;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:var(--paper)}.steps button{background:none;border:0;border-top:1px solid var(--line);color:#94978b;display:flex;align-items:center;gap:14px;font-size:8px;text-align:left}.steps button span{font-size:10px}.steps button[aria-current]{color:var(--ink);border-color:var(--ink)}.progress{position:absolute;bottom:0;width:100%;height:2px;background:#e5e5db}.progress i{display:block;height:100%;width:0;background:#8d9874}.fine-print{position:fixed;bottom:0;left:0;right:0;text-align:center;font-size:8px;color:#96998d;height:35px;padding-top:12px;background:var(--paper);z-index:10}
+@media(max-width:760px){header{height:72px;margin:0 6%}.brand{font-size:37px}header>span{display:none}header>button{font-size:10px}.fixed-art{inset:88px 0 auto;height:43svh;max-height:410px}.portrait-stack{width:82vw;max-width:400px;mask-image:linear-gradient(to bottom,#000 83%,transparent)}.chapter{height:115svh;min-height:650px;display:block;padding:0 7%}.copy,.chapter:nth-child(even) .copy{position:absolute;left:7%;right:7%;top:58svh;text-align:center}.chapter:last-child{height:100svh}.chapter aside{display:none}h1,h2{font-size:36px;letter-spacing:-1.6px;line-height:1.05;margin-bottom:14px}h1 br,h2 br{display:none}.eyebrow{font-size:8px;margin-bottom:14px}.copy>p:not(.eyebrow){font-size:11px;line-height:1.65;margin-bottom:14px}.copy>p br{display:none}.next{padding:10px 17px;font-size:9px}.fixed-caption{bottom:auto;top:53svh;font-size:9px}.steps{bottom:30px;height:48px;gap:10px;left:6%;right:6%}.steps button{font-size:7px;gap:5px;padding:0}.steps button span{font-size:8px}.fine-print{font-size:7px;height:30px;padding-top:10px}}@media(max-height:730px) and (max-width:760px){.fixed-art{top:76px;height:35svh}.fixed-caption{top:48svh}.copy,.chapter:nth-child(even) .copy{top:53svh}.eyebrow{margin-bottom:9px}h1,h2{font-size:30px}.copy>p:not(.eyebrow){font-size:10px}.steps{height:40px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+#motion{width:100%;height:100%;object-fit:contain;display:block;will-change:filter}.portrait-stack{aspect-ratio:480/854}.fixed-art{contain:layout style}
+/* Surface Skin Habit brand */
+:root{--paper:#fff;--ink:#111;--muted:#666;--accent:#111;--line:#ddd}
+header{height:112px}.brand{display:flex;align-items:center;line-height:1;letter-spacing:normal}.brand img{display:block;width:100px;height:100px;object-fit:contain}header>span{color:#555}
+aside b,.fixed-caption{color:#111}.steps button{color:#888}.progress{background:#eee}.progress i{background:#111}.fine-print{color:#777}.next:hover{background:#444}
+.portrait-stack{mask-image:none;overflow:visible}.fixed-art{top:116px;bottom:142px}.fixed-caption{bottom:113px}#motion{object-fit:contain}
+@media(max-width:760px){header{height:84px}.brand img{width:76px;height:76px}.fixed-art{top:95px;bottom:auto;height:39svh}.portrait-stack{mask-image:none}.fixed-caption{top:53svh;bottom:auto}}
+@media(max-height:730px) and (max-width:760px){.fixed-art{top:87px;height:32svh}.fixed-caption{top:48svh}}
+/* Larger centered motion, flush with viewport bottom */
+.fixed-art{inset:auto 0 0;height:min(calc((100svh - 258px)*1.5),100svh);max-height:none;align-items:flex-end}
+.portrait-stack{height:100%;width:auto;max-width:none;aspect-ratio:480/854}
+header{background:transparent;border-bottom:0;pointer-events:none}header a,header button{pointer-events:auto;background:#fff}header>span{display:none}
+.chapter{grid-template-columns:26% 48% 26%}.steps{left:3%;right:auto;bottom:58px;width:175px;height:auto;display:flex;flex-direction:column;gap:0;background:transparent}.steps button{height:34px;border:0;background:transparent}.steps button[aria-current]{font-weight:600}.progress{bottom:-12px}.fixed-caption{left:auto;right:3%;bottom:22px;transform:none}.fine-print{left:3%;right:auto;width:210px;bottom:12px;height:auto;padding:0;text-align:left;background:transparent;font-size:7px}
+@media(max-width:760px){.fixed-art{inset:auto 0 0;height:70svh;max-height:none}.portrait-stack{width:auto;max-width:100vw;height:100%}.copy,.chapter:nth-child(even) .copy{top:105px;left:7%;right:7%}.copy h1,.copy h2{font-size:29px;margin-bottom:10px}.copy .eyebrow{margin-bottom:10px}.copy>p:not(.eyebrow){font-size:10px;margin-bottom:10px}.copy .next{padding:8px 13px}.steps{left:auto;right:12px;bottom:70px;width:25px;height:auto;gap:3px}.steps button{justify-content:center;height:29px;background:#ffffffd9;border-radius:50%;font-size:9px}.steps button span{display:none}.steps .progress{display:none}.fixed-caption{top:auto;bottom:12px;right:12px;font-size:7px}.fine-print{left:12px;bottom:12px;width:120px;font-size:6px}.chapter{display:block}}
+@media(max-height:730px) and (max-width:760px){.fixed-art{height:65svh}.copy,.chapter:nth-child(even) .copy{top:91px}.copy>p:not(.eyebrow){display:none}.copy h1,.copy h2{font-size:26px}}
+
+/* Readability pass */
+h1,h2{font-size:clamp(46px,4.8vw,78px);line-height:1.04}
+.eyebrow{font-size:11px;letter-spacing:2.2px}
+.copy>p:not(.eyebrow){font-size:15px;line-height:1.8}
+.next{font-size:12px;padding:16px 23px}
+aside p{font-size:27px}
+aside small{font-size:10px}
+.fixed-caption{font-size:13px}
+.steps{width:215px}.steps button{font-size:11px;height:39px}.steps button span{font-size:12px}
+.fine-print{font-size:9px;width:270px}
+header>button{font-size:13px}
+@media(max-width:760px){.copy h1,.copy h2{font-size:38px;line-height:1.06}.copy .eyebrow{font-size:10px}.copy>p:not(.eyebrow){font-size:13px;line-height:1.65}.copy .next{font-size:11px;padding:11px 18px}.steps{width:33px}.steps button{font-size:11px}.fixed-caption{font-size:9px}.fine-print{font-size:7px;width:145px}}
+@media(max-height:730px) and (max-width:760px){.copy h1,.copy h2{font-size:31px}.copy>p:not(.eyebrow){font-size:11px}}
+
+/* One-line heading that travels across the first scroll section */
+#journey-heading{white-space:nowrap;will-change:transform;position:relative;z-index:4}
+@media(max-width:760px){#journey-heading{font-size:clamp(28px,8vw,38px);letter-spacing:-1.3px}}
+
+/* Keep the moving headline behind the canvas animation. */
+#awal .copy{z-index:1;isolation:auto}
+#journey-heading{z-index:1}
+
+/* Surface Skin Habit uses Neurial Grotesk Medium for its heading scale. */
+h1,h2{font-family:'Neurial Grotesk Medium',Arial,sans-serif;font-weight:500;letter-spacing:-.055em}
+
+/* Large, uppercase Surface Skin Habit heading treatment. */
+#journey-heading{font-size:clamp(58px,6.3vw,108px);letter-spacing:-.065em;text-transform:uppercase;line-height:.95}
+@media(max-width:760px){#journey-heading{font-size:clamp(36px,10vw,52px);letter-spacing:-.055em}}
+
+/* Four-part Surface Skin Habit story */
+body{overflow-x:hidden}.chapter{overflow:hidden}.chapter .copy{z-index:4}.intro #journey-heading{max-width:760px;white-space:normal;font-size:clamp(58px,6.25vw,108px);line-height:.91}.intro .copy>p:not(.eyebrow){max-width:350px}.experience-rail{position:absolute;z-index:1;left:0;top:13%;display:flex;gap:20px;width:max-content;will-change:transform}.experience-rail figure{width:260px;margin:0;background:#fff}.experience-rail img{display:block;width:100%;height:350px;object-fit:cover;filter:grayscale(1);opacity:.92}.experience-rail figcaption{padding:11px 10px 16px;font:10px/1.2 'Neurial Grotesk Medium',sans-serif;letter-spacing:.06em}.experience .copy{grid-column:1}.team .copy{grid-column:1}.expert-grid{position:absolute;inset:9% 4% 7%;z-index:1;pointer-events:none}.expert{position:absolute;width:132px;margin:0;text-align:center}.expert img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;filter:grayscale(1)}.expert h3{font:8px/1.2 'Neurial Grotesk Medium',Arial,sans-serif;letter-spacing:.03em;margin:8px -20px 0}.e1{left:25%;top:3%}.e2{left:9%;top:30%}.e3{left:27%;top:57%}.e4{right:27%;top:3%}.e5{right:9%;top:25%}.e6{right:27%;top:52%}.e7{right:9%;top:73%}.testimonials .copy{grid-column:1}.testimonial-list{grid-column:3;grid-row:1;z-index:4;display:grid;gap:16px}.testimonial-list article{display:flex;align-items:center;gap:16px;padding:12px;border-top:1px solid var(--line);background:#ffffffd9}.testimonial-list img{width:70px;height:70px;border-radius:50%;object-fit:cover;filter:grayscale(1)}.testimonial-list h3{font:11px 'Neurial Grotesk Medium',sans-serif;margin:0 0 7px}.testimonial-list p{font:11px/1.45 'DM Sans',sans-serif;margin:0;color:#555}.testimonials h2,.team h2{max-width:410px}.experience h2{max-width:490px}
+@media(max-width:760px){.intro #journey-heading{font-size:clamp(44px,11.7vw,64px);max-width:100%}.experience-rail{top:13%;gap:10px}.experience-rail figure{width:150px}.experience-rail img{height:210px}.experience-rail figcaption{font-size:7px;padding:6px}.experience .copy,.team .copy,.testimonials .copy{top:52svh}.expert-grid{inset:14% 4% 40%}.expert{width:76px}.expert h3{font-size:5px;margin:4px -10px 0}.e1{left:22%;top:2%}.e2{left:3%;top:25%}.e3{left:23%;top:50%}.e4{right:22%;top:2%}.e5{right:3%;top:22%}.e6{right:22%;top:47%}.e7{right:3%;top:68%}.testimonial-list{position:absolute;left:7%;right:7%;top:18%;display:grid;gap:7px}.testimonial-list article{gap:8px;padding:7px}.testimonial-list img{width:45px;height:45px}.testimonial-list h3{font-size:8px;margin-bottom:3px}.testimonial-list p{font-size:8px;line-height:1.3}.testimonials .copy{top:56svh}.team .copy{top:57svh}}
+
+/* Give Dr. Evans a clear left-upper position, away from the team copy. */
+.team .e2{left:5%;top:2%}
+@media(max-width:760px){.team .e2{left:2%;top:1%}}
+
+/* The experience gallery is monochrome on entry, then reaches full colour at its midpoint. */
+.experience-rail{will-change:transform,filter}.experience-rail img{filter:none}
+.expert-grid{will-change:filter}.expert img{filter:none}
+.team .copy{transform:translateY(58px)}
+@media(max-width:760px){.team .copy{transform:translateY(28px)}}
+.testimonial-list.left{grid-column:1;grid-row:1;align-self:end;margin:0 0 11%}.testimonials .copy{align-self:center}
+@media(max-width:760px){.testimonial-list.left{top:67%;margin:0}.testimonials .copy{align-self:auto}}

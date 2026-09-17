@@ -1,0 +1,7 @@
+Built-in imagegen, identity-preserve edits of the user-provided photo.
+
+FINAL:
+Use case: identity-preserve. Edit target: attached original woman photo. Create final frame for a website scroll transformation. Keep EXACT same composition, head position, face identity, hair, hand covering left side of face, closed eyes, shoulders, background brown color, framing and 3:2 aspect ratio. Change only skin and mouth expression: remove acne and redness naturally while retaining pores and realistic skin texture, healthy luminous glowing skin, and a visibly happy warm smile with slightly parted lips and subtle teeth. Do not move hand or head. Photorealistic, no text, no layout. Alignment with original is critical for crossfade.
+
+INTERMEDIATE:
+Use case: identity-preserve. Edit target original acne portrait. Create intermediate frame for scroll animation. Keep original EXACT framing, identity, facial features, neutral closed mouth expression, closed eyes, hand position, hair and flat brown background. ONLY reduce acne/redness by about 75 percent on forehead cheek and chin, retaining faint marks, natural pores and texture. Do not smile yet. Same photographic lighting, same 3:2 composition and pixel alignment. No text.
