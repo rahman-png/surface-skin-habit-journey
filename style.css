@@ -63,3 +63,7 @@ body{overflow-x:hidden}.chapter{overflow:hidden}.chapter .copy{z-index:4}.intro 
 @media(max-width:760px){.team .copy{transform:translateY(28px)}}
 .testimonial-list.left{grid-column:1;grid-row:1;align-self:end;margin:0 0 11%}.testimonials .copy{align-self:center}
 @media(max-width:760px){.testimonial-list.left{top:67%;margin:0}.testimonials .copy{align-self:auto}}
+
+/* Keep all editorial copy clear of persistent controls and moving imagery. */
+.steps{display:none}.experience-rail{top:2%}.experience-rail img{height:280px}
+@media(max-width:760px){.experience-rail{top:12%}.experience-rail img{height:185px}}
