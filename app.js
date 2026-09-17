@@ -27,7 +27,10 @@ function tick(now){raf=0;const dt=Math.min((now-(lastTime||now))/1000,.05);lastT
 }
 function schedule(){if(!raf)raf=requestAnimationFrame(tick)}
 function update(){let position=3;for(let i=0;i<3;i++){if(scrollY<chapters[i+1].offsetTop){position=i+clamp((scrollY-chapters[i].offsetTop)/(chapters[i+1].offsetTop-chapters[i].offsetTop));break}}
- target=position/3*(total-1);const next=Math.min(3,Math.round(position));document.querySelector('.progress i').style.width=`${position/3*100}%`;
+ // Keep the portrait still through the clinic and experience chapters; its motion begins afterwards.
+ const animationRange=Math.max(1,document.documentElement.scrollHeight-innerHeight-chapters[2].offsetTop);
+ const animationProgress=clamp((scrollY-chapters[2].offsetTop)/animationRange);
+ target=animationProgress*(total-1);const next=Math.min(3,Math.round(position));document.querySelector('.progress i').style.width=`${position/3*100}%`;
  // The portrait gains colour continuously across the complete skin journey.
  canvas.style.filter=`grayscale(${(1-position/3)*100}%)`;
  const firstSectionProgress=clamp(scrollY/(chapters[1].offsetTop-chapters[0].offsetTop));
