@@ -94,5 +94,13 @@ header .brand{background:transparent!important}
 .concern::before{display:none}.portrait-stack .concern.dullness{left:77%;top:27%}.portrait-stack .concern.oily{left:77%;top:36%}
 @media(max-width:760px){.portrait-stack .concern.dullness{left:74%;top:27%}.portrait-stack .concern.oily{left:74%;top:36%}}
 
+/* A quieter, consistent callout system around the portrait. */
+.portrait-stack .concern{font-size:9px;letter-spacing:.08em}
+.portrait-stack .concern span{padding:3px 0 3px 8px;border:0;background:transparent;white-space:nowrap}
+.portrait-stack .concern::after{width:108px;height:14px;top:50%;background:center/100% 100% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 14'%3E%3Cpath d='M108 7 C94 1 82 13 68 7 S42 1 28 7 S10 13 0 7' fill='none' stroke='%23111' stroke-width='1.2'/%3E%3C/svg%3E")}
+.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:80%;right:auto}
+.portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:54%}
+@media(max-width:760px){.portrait-stack .concern{font-size:7px}.portrait-stack .concern span{padding-left:5px}.portrait-stack .concern::after{width:74px}.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:76%}.portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:53%}}
+
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
 .experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}
