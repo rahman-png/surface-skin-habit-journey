@@ -102,5 +102,10 @@ header .brand{background:transparent!important}
 .portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:54%}
 @media(max-width:760px){.portrait-stack .concern{font-size:7px}.portrait-stack .concern span{padding-left:5px}.portrait-stack .concern::after{width:74px}.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:76%}.portrait-stack .concern.acne{top:18%}.portrait-stack .concern.dullness{top:29%}.portrait-stack .concern.oily{top:40%}.portrait-stack .concern.dryness{top:53%}}
 
+/* Keep every concern marker and its line in the clear space on the right. */
+.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:84%}
+.portrait-stack .concern::after{left:100%;right:auto;margin-left:8px}
+@media(max-width:760px){.portrait-stack .concern.acne,.portrait-stack .concern.dullness,.portrait-stack .concern.oily,.portrait-stack .concern.dryness{left:78%}.portrait-stack .concern::after{display:none}}
+
 /* The Experience chapter becomes a cream panel that masks the fixed portrait. */
 .experience{background:#efe9df;border-top:1px solid #111;border-bottom:1px solid #111;z-index:3;isolation:isolate}.experience .copy{z-index:4}.experience-rail{z-index:1}
