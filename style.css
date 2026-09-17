@@ -69,3 +69,7 @@ body{overflow-x:hidden}.chapter{overflow:hidden}.chapter .copy{z-index:4}.intro 
 @media(max-width:760px){.experience-rail{top:12%}.experience-rail img{height:185px}}
 header .brand{background:transparent!important}
 .top-menu{display:flex;align-items:center;gap:0;border:1px solid #111;background:#fff;pointer-events:auto}.top-menu a{padding:13px 16px;border-right:1px solid #111;font:10px/1 'Neurial Grotesk Medium',Arial,sans-serif;letter-spacing:.06em;white-space:nowrap}.top-menu a:last-child{border-right:0}.top-menu a:hover{background:#111;color:#fff}@media(max-width:760px){.top-menu{position:absolute;top:79px;left:0;right:0;justify-content:center;border-width:1px 0}.top-menu a{font-size:7px;padding:10px 8px}}
+
+/* Attached, softer main navigation. */
+.top-menu{position:absolute;top:0;left:50%;transform:translateX(-50%);border-top:0;border-radius:0 0 18px 18px;overflow:hidden}.top-menu a{padding:19px 23px;font-size:12px}
+@media(max-width:760px){.top-menu{top:0;left:50%;right:auto;border:1px solid #111;border-top:0;border-radius:0 0 12px 12px}.top-menu a{font-size:8px;padding:13px 10px}}
