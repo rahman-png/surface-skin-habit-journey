@@ -1,59 +1,45 @@
-const chapters=[...document.querySelectorAll('.chapter')],buttons=[...document.querySelectorAll('.steps button')];
-const labels=['YOUR FRIENDLY EXPERT SKIN CLINIC.','UNIQUE EXPERIENCE SKIN.','MEET OUR TEAM OF EXPERTS.','WHAT THEY SAY ABOUT US.'];
-const canvas=document.querySelector('#motion'),ctx=canvas.getContext('2d');
-const journeyHeading=document.querySelector('#journey-heading');
-const experienceRail=document.querySelector('.experience-rail');
-const expertGrid=document.querySelector('.expert-grid');
-const concernMarkers=[...document.querySelectorAll('.concern')];
-const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-const clamp=v=>Math.max(0,Math.min(1,v));
-const total=240, cache=new Map(),pending=new Map();
-let target=0,shown=0,stage=-1,raf=0,lastTime=0,lastDrawn=-1,failed=false;
-const url=i=>`assets/motion/${String(i).padStart(3,'0')}.webp`;
-async function frame(i){
- if(cache.has(i))return cache.get(i);
- if(pending.has(i))return pending.get(i);
- const work=fetch(url(i),{cache:'force-cache'}).then(r=>{if(!r.ok)throw Error('Frame unavailable');return r.blob()}).then(createImageBitmap).then(b=>{cache.set(i,b);pending.delete(i);trim();return b}).catch(e=>{pending.delete(i);if(!failed){failed=true;document.querySelector('#skin-state').textContent='Animasi belum termuat. Coba refresh halaman.'}throw e});
- pending.set(i,work);return work;
-}
-function trim(){if(cache.size<=32)return;const center=Math.round(shown);const keys=[...cache.keys()].sort((a,b)=>Math.abs(b-center)-Math.abs(a-center));while(cache.size>32){const key=keys.shift();cache.get(key).close();cache.delete(key)}}
-function draw(i){const bitmap=cache.get(i);if(!bitmap||lastDrawn===i)return;ctx.clearRect(0,0,480,854);ctx.drawImage(bitmap,0,0);lastDrawn=i;canvas.dataset.frame=i;}
-function tick(now){raf=0;const dt=Math.min((now-(lastTime||now))/1000,.05);lastTime=now;shown+= (target-shown)*(reduce.matches?1:1-Math.exp(-dt/0.11));if(Math.abs(target-shown)<.08)shown=target;
- const index=Math.max(0,Math.min(total-1,Math.round(shown)));draw(index);
- frame(index).then(()=>{if(Math.abs(Math.round(shown)-index)<=1)draw(index)}).catch(()=>{});
- const direction=target>=shown?1:-1;
- for(let j=1;j<=5;j++){const n=index+j*direction;if(n>=0&&n<total)frame(n).catch(()=>{})}
- if(shown!==target)raf=requestAnimationFrame(tick);else lastTime=0;
-}
-function schedule(){if(!raf)raf=requestAnimationFrame(tick)}
-function update(){let position=3;for(let i=0;i<3;i++){if(scrollY<chapters[i+1].offsetTop){position=i+clamp((scrollY-chapters[i].offsetTop)/(chapters[i+1].offsetTop-chapters[i].offsetTop));break}}
- // Keep the portrait still through the clinic and experience chapters; its motion begins afterwards.
- const animationRange=Math.max(1,document.documentElement.scrollHeight-innerHeight-chapters[2].offsetTop);
- const animationProgress=clamp((scrollY-chapters[2].offsetTop)/animationRange);
- target=animationProgress*(total-1);const next=Math.min(3,Math.round(position));document.querySelector('.progress i').style.width=`${position/3*100}%`;
- // The portrait gains colour continuously across the complete skin journey.
- canvas.style.filter=`grayscale(${(1-position/3)*100}%)`;
- const firstSectionProgress=clamp(scrollY/(chapters[1].offsetTop-chapters[0].offsetTop));
- const headingParent=journeyHeading.parentElement.getBoundingClientRect();
- const headingEnd=Math.max(0,innerWidth-24-headingParent.left-journeyHeading.offsetWidth);
- journeyHeading.style.transform=`translateX(${headingEnd*firstSectionProgress}px)`;
- const suctionProgress=clamp(firstSectionProgress*1.5);
- concernMarkers.forEach(marker=>{marker.style.opacity=String(1-suctionProgress);marker.style.transform=`translate(${-120*suctionProgress}px,${55*suctionProgress}px) scale(${1-.5*suctionProgress})`});
- const experienceProgress=clamp((scrollY-chapters[1].offsetTop)/(chapters[2].offsetTop-chapters[1].offsetTop));
- if(experienceRail){
-  const travel=Math.max(0,experienceRail.offsetWidth-innerWidth+45);
-  experienceRail.style.transform=`translateX(${-travel*experienceProgress}px)`;
-  // Finish the gallery's colour transition before the Experience chapter reaches the fixed portrait.
-  const experienceColourProgress=clamp((scrollY-(chapters[1].offsetTop-innerHeight))/(innerHeight));
-  experienceRail.style.filter=`grayscale(${(1-experienceColourProgress)*100}%)`;
- }
- if(next!==stage){stage=next;buttons.forEach((b,i)=>{if(i===stage)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});if(!failed)document.querySelector('#skin-state').textContent=labels[stage]}
- schedule();
-}
-// Warm the browser's compressed-file cache without retaining hundreds of decoded frames.
-async function warm(){let next=0;await Promise.all(Array.from({length:4},async()=>{while(next<total){const i=next++;try{const r=await fetch(url(i),{cache:'force-cache'});if(r.ok)await r.blob()}catch{}}}));canvas.dataset.loaded='true'}
-frame(0).then(()=>{draw(0);update();warm()}).catch(()=>{});
-
-document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>scrollTo({top:chapters[Number(b.dataset.step)].offsetTop,behavior:reduce.matches?'instant':'smooth'})));
-addEventListener('scroll',update,{passive:true});addEventListener('resize',update);reduce.addEventListener('change',update);update();
-
+const header=document.querySelector(".site-header");
+const menus=[...document.querySelectorAll(".mega-menu")];
+const menuButtons=[...document.querySelectorAll("[data-menu]")];
+function closeMenus(){menus.forEach(menu=>menu.hidden=true);menuButtons.forEach(button=>button.setAttribute("aria-expanded","false"))}
+menuButtons.forEach(button=>button.addEventListener("click",()=>{const menu=document.getElementById("menu-"+button.dataset.menu);const opening=menu.hidden;closeMenus();menu.hidden=!opening;button.setAttribute("aria-expanded",String(opening))}));
+document.addEventListener("click",event=>{if(!event.target.closest(".mega-menu,.has-menu"))closeMenus()});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"){closeMenus();document.querySelector(".search-panel").hidden=true;header.classList.remove("mobile-open")}});
+document.querySelectorAll(".mega-menu a").forEach(link=>link.addEventListener("click",closeMenus));
+const mobileToggle=document.querySelector(".mobile-menu-toggle");
+mobileToggle.addEventListener("click",()=>{const open=header.classList.toggle("mobile-open");mobileToggle.setAttribute("aria-expanded",String(open))});
+document.querySelectorAll(".site-header a").forEach(link=>link.addEventListener("click",()=>{header.classList.remove("mobile-open");mobileToggle.setAttribute("aria-expanded","false")}));
+const searchPanel=document.querySelector(".search-panel");
+document.querySelector(".search-toggle").addEventListener("click",()=>{searchPanel.hidden=!searchPanel.hidden;if(!searchPanel.hidden)document.querySelector("#site-search").focus()});
+document.querySelector(".search-close").addEventListener("click",()=>searchPanel.hidden=true);
+document.querySelector("#site-search").addEventListener("keydown",event=>{if(event.key!=="Enter")return;const value=event.target.value.trim().toLowerCase();if(!value)return;const target=[...document.querySelectorAll("main section")].find(section=>section.textContent.toLowerCase().includes(value));if(target){target.scrollIntoView({behavior:"smooth"});searchPanel.hidden=true}else{event.target.setCustomValidity("No matching section in this homepage mockup.");event.target.reportValidity();setTimeout(()=>event.target.setCustomValidity(""),2000)}});
+const reviews=[
+  {name:"Yunita Irawan",image:"assets/official/review-yunita.jpg",quote:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."},
+  {name:"Sarah Andreas",image:"assets/official/review-sarah.jpg",quote:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper."},
+  {name:"Sandra Lubis",image:"assets/official/review-sandra.jpg",quote:"Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Lorem ipsum dolor sit amet."},
+  {name:"Prinka Cassey",image:"assets/official/review-prinka.jpg",quote:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."}
+];
+let reviewIndex=0;
+function renderReview(){document.querySelector("#review-name").textContent=reviews[reviewIndex].name;document.querySelector("#review-quote").textContent=reviews[reviewIndex].quote;document.querySelector("#review-image").src=reviews[reviewIndex].image;document.querySelector("#review-image").alt=reviews[reviewIndex].name;document.querySelector("#review-dots").innerHTML=reviews.map((_,i)=>'<span class="'+(i===reviewIndex?"active":"")+'">●</span>').join("")}
+const doctors=[
+  {name:"Dr. Riska Melanie",image:"assets/official/doctor-riska.png"},
+  {name:"Dr. Evans Sibarani",image:"assets/official/doctor-evans.png"},
+  {name:"Dr. Ajeng Hana Ajani",image:"assets/official/doctor-ajeng.png"},
+  {name:"Dr. Siti Aisyah Devitri",image:"assets/official/doctor-siti.png"}
+];
+let teamIndex=0;
+function renderTeam(){const visible=Array.from({length:4},(_,i)=>doctors[(teamIndex+i)%doctors.length]);document.querySelector("#team-grid").innerHTML=visible.map(doctor=>'<article><img src="'+doctor.image+'" alt="'+doctor.name+'"><h3>'+doctor.name+'</h3><p>Doctor</p></article>').join("");document.querySelector("#team-dots").innerHTML=doctors.map((_,i)=>'<span class="'+(i===teamIndex?"active":"")+'">●</span>').join("")}
+document.querySelectorAll("[data-carousel]").forEach(button=>button.addEventListener("click",()=>{const step=button.dataset.direction==="next"?1:-1;if(button.dataset.carousel==="review"){reviewIndex=(reviewIndex+step+reviews.length)%reviews.length;renderReview()}else{teamIndex=(teamIndex+step+doctors.length)%doctors.length;renderTeam()}}));
+renderReview();renderTeam();
+const faqData={
+  booking:["How to book?","I booked through your website, hotline, or phone but never received a confirmation email.","I want to cancel my booking.","I am too late for my treatment, can I still come?","Do you have a loyalty program?"],
+  covid:["What health protocols are in place?","Can I reschedule if I feel unwell?"],
+  general:["What should I expect at my first visit?","How do I choose the right treatment?","Are consultations available?"],
+  packages:["Can I buy a treatment package?","How do vouchers work?"],
+  payment:["What payment methods are accepted?","Can I pay at the clinic?"]
+};
+const faqList=document.querySelector("#faq-list");
+function renderFaq(category){faqList.innerHTML=faqData[category].map(question=>'<div class="faq-item"><button type="button" aria-expanded="false">'+question+'<span>+</span></button><p hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p></div>').join("");faqList.querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>{const expanded=button.getAttribute("aria-expanded")==="true";button.setAttribute("aria-expanded",String(!expanded));button.nextElementSibling.hidden=expanded;button.querySelector("span").textContent=expanded?"+":"−"}))}
+document.querySelectorAll("[data-faq-tab]").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll("[data-faq-tab]").forEach(tab=>tab.classList.remove("active"));button.classList.add("active");renderFaq(button.dataset.faqTab)}));
+renderFaq("booking");
+document.querySelector("#newsletter").addEventListener("submit",event=>{event.preventDefault();document.querySelector(".form-status").textContent="This form is a visual mockup; sign-up is not connected yet."});
